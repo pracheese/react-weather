@@ -19,8 +19,9 @@ const CustomizedDot = (props) => {
 const CurrentInfo = (props) =>{
   return(
     <div className="justify-content-center">
-      <h5>{props.city}</h5>
-      <h5>{props.temp}</h5>
+      <h5>{props.city} </h5>
+      <h6>{props.weather}</h6>
+      <h5>{props.temp} </h5>
     </div>
   )
 }
@@ -30,7 +31,9 @@ class Weather extends React.Component {
     state = {
       curr_temp:0,
       curr_city: "",
-      temp_time_data:[]
+      curr_weather:"",
+      temp_time_data:[],
+      weatherData:[]
     };
 
   componentDidMount = () => {
@@ -44,9 +47,13 @@ class Weather extends React.Component {
       .then(data => {
         const curr_temp = Math.round(data.main["temp"])
         const curr_city = data.name
+        const curr_weather = data.weather[0].description
+        
+        console.log("current" , data.weather[0].description)
       this.setState({
         curr_city:curr_city,
-        curr_temp:curr_temp
+        curr_temp:curr_temp,
+        curr_weather:curr_weather
       })})
 
     fetch(forecastURL)
@@ -54,10 +61,11 @@ class Weather extends React.Component {
     .then(data => {
     const timeArr = data.list.map(item => item['dt_txt'])
     const tempArr = data.list.map(item => item['main'])
+    const weatherArr = data.list.map(item => item['weather']).map(desc=>(desc[0])).map(des=>(des['description']))
     const feelsArr = tempArr.map(temp=>Math.round(temp['feels_like']))
     const temp = tempArr.map(temp=>Math.round(temp['temp']))
     const temp_time_data= [];
-    console.log("full data",data.list)
+    console.log("weather data",weatherArr)
     for(var i=0;i<40;i++){
       temp_time_data.push([timeArr[i],temp[i],feelsArr[i]])
     }
@@ -72,11 +80,12 @@ class Weather extends React.Component {
     var tempData=this.state.temp_time_data;
     var currentTemp = this.state.curr_temp;
     var currentCity = this.state.curr_city;
+    var currentWeather = this.state.curr_weather;
     console.log("state data",tempData)
     return(
     <div className="weatherApp">
       <div className="currentWeather">
-          <CurrentInfo temp = {currentTemp} city ={currentCity} />
+          <CurrentInfo temp = {currentTemp} city ={currentCity} weather={currentWeather} />
       </div>
       <ResponsiveContainer>
       <ComposedChart data={tempData}>
