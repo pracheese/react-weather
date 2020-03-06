@@ -35,7 +35,7 @@ class Weather extends React.Component {
 
   componentDidMount = () => {
      const forecastURL =
-    `http://api.openweathermap.org/data/2.5/forecast?zip=20901,us&units=metric&APPID=801561aef0674d08a30111cde237b111`
+    `http://api.openweathermap.org/data/2.5/forecast?zip=20901,us&units=metric&APPID=${keys.weatherKey}`
     const weatherURL =
     `http://api.openweathermap.org/data/2.5/weather?zip=20901,us&units=metric&APPID=${keys.weatherKey}`
 
