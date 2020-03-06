@@ -36,3 +36,62 @@
     transform: rotate(360deg);
   }
 }
+
+:root{
+  --color-yellow:rgba(215, 153, 34,.6);
+  --color-blue: rgba(197, 203, 227,.5);
+
+  --color-gray: gray;
+  --color-white: rgba(255, 255, 255,.5);
+
+  --color-shadow:rgb(0, 0, 0,.6);
+}
+
+.summerBlock{
+  background-image:linear-gradient(to bottom right,var(--color-yellow),var(--color-blue));
+  box-shadow: 0 2rem 3rem var(--color-shadow);
+}
+
+.app{
+  height:100vh;
+  width:100%;
+  background-size: cover;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.summerApp{
+  background-image: linear-gradient(to bottom right, var(--color-blue),var(--color-yellow));
+}
+
+.winterApp{
+  background-image: linear-gradient(to bottom right, var(--color-gray),var(--color-white));
+}
+
+.weatherApp{
+  height: 275px;
+  width: 200px;
+  border-width:1px; 
+  border-style: solid;
+  border-radius: 6px;
+  border-color: var(--color-blue);
+  background-image:linear-gradient(to bottom right,var(--color-blue),var(--color-white));
+  box-shadow: 0 2rem 4rem var(--color-shadow);
+  color:black;
+  text-align: center;
+  justify-content: center;
+  padding-top: 5px;
+  font-size: 10px;
+}
+
+.summary{
+  display: flex;
+  flex-direction: column; 
+}
+
+.currentWeather{
+  height:75px;
+  margin-bottom: 50px;
+  padding-top:20px
+}
