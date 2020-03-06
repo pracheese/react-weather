@@ -35,9 +35,9 @@ class Weather extends React.Component {
 
   componentDidMount = () => {
      const forecastURL =
-    `http://api.openweathermap.org/data/2.5/forecast?zip=20901,us&units=metric&APPID=${keys.weatherKey}`
+    `https://api.openweathermap.org/data/2.5/forecast?zip=20901,us&units=metric&APPID=${keys.weatherKey}`
     const weatherURL =
-    `http://api.openweathermap.org/data/2.5/weather?zip=20901,us&units=metric&APPID=${keys.weatherKey}`
+    `https://api.openweathermap.org/data/2.5/weather?zip=20901,us&units=metric&APPID=${keys.weatherKey}`
 
     fetch(weatherURL)
       .then(response => response.json())
