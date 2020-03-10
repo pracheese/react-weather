@@ -69,7 +69,7 @@
   background-image: linear-gradient(to bottom right, var(--color-gray),var(--color-white));
 }
 
-[class="box"]{
+[class*="box"]{
   height:100%;
   width:100%
 }
