@@ -69,9 +69,19 @@
   background-image: linear-gradient(to bottom right, var(--color-gray),var(--color-white));
 }
 
+[class="box"]{
+  height:100%;
+  width:100%
+}
+
+@media only screen and (min-width: 768px) {
+  .box{
+    height: 60%;
+    width: 30%;
+  }
+}
+
 .weatherApp{
-  height: 275px;
-  width: 200px;
   border-width:1px; 
   border-style: solid;
   border-radius: 6px;

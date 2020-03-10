@@ -37,6 +37,8 @@ class Weather extends React.Component {
     };
 
   componentDidMount = () => {
+    const handler = e => this.setState({matches: e.matches});
+    window.matchMedia("(min-width: 768px)").addListener(handler);
      const forecastURL =
     `https://api.openweathermap.org/data/2.5/forecast?zip=20901,us&units=metric&APPID=${keys.weatherKey}`
     const weatherURL =
@@ -75,27 +77,26 @@ class Weather extends React.Component {
     })
   }
 
-
   render (){
+    
     var tempData=this.state.temp_time_data;
     var currentTemp = this.state.curr_temp;
     var currentCity = this.state.curr_city;
     var currentWeather = this.state.curr_weather;
     console.log("state data",tempData)
     return(
-    <div className="weatherApp">
+    <div className="weatherApp box">
       <div className="currentWeather">
           <CurrentInfo temp = {currentTemp} city ={currentCity} weather={currentWeather} />
       </div>
       <ResponsiveContainer>
-      <ComposedChart data={tempData}>
-       
-        <Bar name = "Temperature" dataKey="1" fill="#4056a1" barSize={2}/>
-        <Line name = "Feels like" type= "natural" dataKey="2" stroke="#f13c20" dot={<CustomizedDot/>} />
-        <XAxis dataKey="0" height={150} interval="preserveStart"/>
-        <Tooltip cursor={{ stroke: 'white', strokeWidth: 2 }}/>
-        <Legend verticalAlign="top" height={20} iconSize={10}/>
-      </ComposedChart>
+        <ComposedChart data={tempData}>
+          <Bar name = "Temperature" dataKey="1" fill="#4056a1" barSize={2}/>
+          <Line name = "Feels like" type= "natural" dataKey="2" stroke="#f13c20" dot={<CustomizedDot/>} />
+          <XAxis dataKey="0" height={150} interval="preserveStart"/>
+          <Tooltip cursor={{ stroke: 'white', strokeWidth: 2 }}/>
+          <Legend verticalAlign="top" height={20} iconSize={10}/>
+        </ComposedChart>
       </ResponsiveContainer>
     </div>
     );
@@ -104,7 +105,7 @@ class Weather extends React.Component {
 
 function App(){
   return(
-    <div className="app winterApp">
+    <div className="app summerApp">
       <Weather/>
     </div>
   )
